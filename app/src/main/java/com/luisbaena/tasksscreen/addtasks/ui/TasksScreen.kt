@@ -174,3 +174,131 @@ fun AddTasksDialog(
         }
     }
 }
+
+
+//
+//@Composable
+//fun TasksScreen(tasksViewModel: TasksViewModel) {
+//    val showDialog by tasksViewModel.showDialog.observeAsState(false)
+//    val myTaskText by tasksViewModel.myTaskText.observeAsState("")
+//    val myTasks: List<TaskModel> = tasksViewModel.tasks
+//
+//    Box(modifier = Modifier.fillMaxSize()) {
+//        AddTasksDialog(
+//            show = showDialog,
+//            myTaskText = myTaskText,
+//            onDismiss = { tasksViewModel.onDialogClose() },
+//            onTaskAdded = { tasksViewModel.onTaskCreated() },
+//            onTaskTextChanged = { tasksViewModel.onTaskTextChanged(it) }
+//        )
+//
+//        FabDialog(
+//            modifier = Modifier.align(Alignment.BottomEnd),
+//            onNewTask = { tasksViewModel.onShowDialogClick() }
+//        )
+//
+//        TasksList(tasksViewModel)
+//    }
+//}
+//
+//@Composable
+//fun FabDialog(modifier: Modifier, onNewTask: () -> Unit) {
+//    FloatingActionButton(
+//        onClick = { onNewTask() },
+//        modifier = modifier.padding(16.dp)
+//    ) {
+//        Icon(Icons.Filled.Add, contentDescription = "Añadir Tarea")
+//    }
+//}
+//
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun AddTasksDialog(
+//    show: Boolean,
+//    myTaskText: String,
+//    onDismiss: () -> Unit,
+//    onTaskAdded: () -> Unit,
+//    onTaskTextChanged: (String) -> Unit
+//) {
+//    if (show) {
+//        Dialog(onDismissRequest = { onDismiss() }) {
+//            Column(
+//                Modifier
+//                    .fillMaxWidth()
+//                    .background(Color.White)
+//                    .padding(16.dp)
+//            ) {
+//                Text(
+//                    text = "Añade tu tarea",
+//                    fontSize = 18.sp,
+//                    modifier = Modifier.align(Alignment.CenterHorizontally),
+//                    fontWeight = FontWeight.Bold
+//                )
+//                Spacer(modifier = Modifier.size(16.dp))
+//                TextField(
+//                    value = myTaskText,
+//                    onValueChange = { onTaskTextChanged(it) },
+//                    singleLine = true,
+//                    maxLines = 1
+//                )
+//                Spacer(modifier = Modifier.size(16.dp))
+//                Button(
+//                    onClick = { onTaskAdded() },
+//                    modifier = Modifier.fillMaxWidth()
+//                ) {
+//                    Text(text = "Añadir tarea")
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//@Composable
+//fun TasksList(tasksViewModel: TasksViewModel) {
+//    val myTasks: List<TaskModel> = tasksViewModel.tasks
+//
+//    LazyColumn {
+//        items(myTasks, key = { it.id }) { task ->
+//            ItemTask(
+//                taskModel = task,
+//                onTaskRemove = { tasksViewModel.onItemRemove(it) },
+//                onTaskCheckChanged = { tasksViewModel.onCheckBoxSelected(it) }
+//            )
+//        }
+//    }
+//}
+//
+//@Composable
+//fun ItemTask(
+//    taskModel: TaskModel,
+//    onTaskRemove: (TaskModel) -> Unit,
+//    onTaskCheckChanged: (TaskModel) -> Unit
+//) {
+//    Card(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(horizontal = 16.dp, vertical = 8.dp)
+//            .pointerInput(Unit) {
+//                detectTapGestures(onLongPress = {
+//                    onTaskRemove(taskModel)
+//                })
+//            },
+//        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+//    ) {
+//        Row(
+//            modifier = Modifier.fillMaxWidth(),
+//            verticalAlignment = Alignment.CenterVertically
+//        ) {
+//            Text(
+//                text = taskModel.task,
+//                modifier = Modifier
+//                    .padding(horizontal = 4.dp)
+//                    .weight(1f)
+//            )
+//            Checkbox(
+//                checked = taskModel.selected,
+//                onCheckedChange = { onTaskCheckChanged(taskModel) }
+//            )
+//        }
+//    }
+//}
