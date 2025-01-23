@@ -5,8 +5,9 @@ package com.luisbaena.tasksscreen.addtasks.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.luisbaena.tasksscreen.addtasks.data.TasksManageDatabase
 import com.luisbaena.tasksscreen.addtasks.data.TaskDao
+import com.luisbaena.tasksscreen.addtasks.data.TaskRepository
+import com.luisbaena.tasksscreen.addtasks.data.TasksManageDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,4 +35,11 @@ class DatabaseModule {
             "TaskDatabase"
         ).build()
     }
+
+    @Provides
+    @Singleton
+    fun provideTaskRepository(taskDao: TaskDao): TaskRepository {
+        return TaskRepository(taskDao)
+    }
+
 }
