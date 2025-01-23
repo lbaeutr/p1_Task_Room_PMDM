@@ -28,6 +28,11 @@ interface TaskDao {
     fun getTasks(): Flow<List<TaskEntity>>
 
     @Insert
-    suspend fun addTask(item: TaskEntity)}
+    suspend fun addTask(item: TaskEntity)
 
 
+    // Función para eliminar una tarea por su ID (Punto 5) ANADIDO POR NOSOTROS
+    @Query("DELETE FROM TaskEntity WHERE id = :taskId")
+    suspend fun deleteTaskById(taskId: Int)
+
+}

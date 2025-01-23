@@ -8,6 +8,8 @@ import androidx.room.Room
 import com.luisbaena.tasksscreen.addtasks.data.TaskDao
 import com.luisbaena.tasksscreen.addtasks.data.TaskRepository
 import com.luisbaena.tasksscreen.addtasks.data.TasksManageDatabase
+import com.luisbaena.tasksscreen.addtasks.domain.AddTaskUseCase
+import com.luisbaena.tasksscreen.addtasks.domain.GetTasksUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,5 +43,21 @@ class DatabaseModule {
     fun provideTaskRepository(taskDao: TaskDao): TaskRepository {
         return TaskRepository(taskDao)
     }
+
+
+    // ESTO LO HEMOS INTRODUCIDO EN EL PUNTO 5
+    @Provides
+    @Singleton
+    fun provideGetTasksUseCase(taskRepository: TaskRepository): GetTasksUseCase {
+        return GetTasksUseCase(taskRepository)
+    }
+
+    // ESTO LO HEMOS INTRODUCIDO EN EL PUNTO 5
+    @Provides
+    @Singleton
+    fun provideAddTaskUseCase(taskRepository: TaskRepository): AddTaskUseCase {
+        return AddTaskUseCase(taskRepository)
+    }
+
 
 }
