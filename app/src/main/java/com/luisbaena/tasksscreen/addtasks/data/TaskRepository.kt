@@ -15,11 +15,6 @@ class TaskRepository @Inject constructor(private val taskDao: TaskDao) {
         items.map { TaskModel(it.id, it.task, it.selected) }
     }
 
-
-
-
-
-
     // eSTO LO HEMOS ANADIDO EN EL PUNTO 5
     // Función para añadir una tarea
     suspend fun addTask(taskModel: TaskModel) {
@@ -31,4 +26,24 @@ class TaskRepository @Inject constructor(private val taskDao: TaskDao) {
 //    suspend fun deleteTask(taskId: Int) {
 //        taskDao.deleteTaskById(taskId)
 //    }
+
+
+//    suspend fun deleteTask(taskId: TaskModel) {
+//        taskDao.deleteTaskById(taskId)
+//    }
+
+    suspend fun deleteTask(taskModel: TaskModel) {
+        taskDao.deleteTask(TaskEntity(taskModel.id, taskModel.task, taskModel.selected))
+    }
+
+
+    suspend fun updateTask(taskModel: TaskModel) {
+        val entity = TaskEntity(taskModel.id, taskModel.task, taskModel.selected)
+        taskDao.updateTask(entity)
+    }
+
+
+
+
 }
+

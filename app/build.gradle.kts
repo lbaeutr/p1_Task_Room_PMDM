@@ -116,6 +116,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
+
         applicationId = "com.luisbaena.tasksscreen"
         minSdk = 27
         targetSdk = 34
@@ -155,6 +156,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.lifecycle.runtime.compose.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

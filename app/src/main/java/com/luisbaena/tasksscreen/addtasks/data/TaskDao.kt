@@ -2,8 +2,10 @@ package com.luisbaena.tasksscreen.addtasks.data
 
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 
@@ -22,17 +24,35 @@ import kotlinx.coroutines.flow.Flow
 //}
 
 
+//@Dao
+//interface TaskDao {
+//    @Query("SELECT * from TaskEntity")
+//    fun getTasks(): Flow<List<TaskEntity>>
+//
+//    @Insert
+//    suspend fun addTask(item: TaskEntity)
+//
+//
+//    // Función para eliminar una tarea por su ID (Punto 5) ANADIDO POR NOSOTROS
+//    @Query("DELETE FROM TaskEntity WHERE id = :taskId")
+//    suspend fun deleteTaskById(taskId: com.luisbaena.tasksscreen.addtasks.ui.model.TaskModel)
+//
+//    @Update
+//    suspend fun updateTask(task: TaskEntity)
+//
+//}
+
 @Dao
 interface TaskDao {
-    @Query("SELECT * from TaskEntity")
-    fun getTasks(): Flow<List<TaskEntity>>
+    @Query("SELECT * FROM TaskEntity")
+    fun getTasks(): Flow<List<TaskEntity>>  // Asegurar que devuelve TaskEntity
 
     @Insert
-    suspend fun addTask(item: TaskEntity)
+    suspend fun addTask(task: TaskEntity)  // Aquí debe ser TaskEntity
 
+    @Update
+    suspend fun updateTask(task: TaskEntity)  // Aquí también debe ser TaskEntity
 
-    // Función para eliminar una tarea por su ID (Punto 5) ANADIDO POR NOSOTROS
-    @Query("DELETE FROM TaskEntity WHERE id = :taskId")
-    suspend fun deleteTaskById(taskId: Int)
-
+    @Delete
+    suspend fun deleteTask(task: TaskEntity)  // Aquí también debe ser TaskEntity
 }
