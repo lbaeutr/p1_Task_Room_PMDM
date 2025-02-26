@@ -38,6 +38,7 @@ class DatabaseModule {
         ).build()
     }
 
+
     @Provides
     @Singleton
     fun provideTaskRepository(taskDao: TaskDao): TaskRepository {
@@ -45,14 +46,13 @@ class DatabaseModule {
     }
 
 
-    // ESTO LO HEMOS INTRODUCIDO EN EL PUNTO 5
     @Provides
     @Singleton
     fun provideGetTasksUseCase(taskRepository: TaskRepository): GetTasksUseCase {
         return GetTasksUseCase(taskRepository)
     }
 
-    // ESTO LO HEMOS INTRODUCIDO EN EL PUNTO 5
+
     @Provides
     @Singleton
     fun provideAddTaskUseCase(taskRepository: TaskRepository): AddTaskUseCase {

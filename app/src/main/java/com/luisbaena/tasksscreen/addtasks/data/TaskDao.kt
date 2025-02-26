@@ -13,35 +13,6 @@ import kotlinx.coroutines.flow.Flow
  * Define una interfaz que contiene métodos para interactuar con la tabla TaskEntity en la base de datos.
  */
 
-//ESTO ES DEL ENUNCIADO Y LA SOLUCION VIENE MAS ABAJO
-//@Dao
-//interface TaskDao {
-//    @Query("SELECT * from TaskEntity")
-//    fun getTasks(): Flow<List<TaskEntity>>
-//
-//    @Insert
-//    suspend fun addTask(item: TaskEntity)
-//}
-
-
-//@Dao
-//interface TaskDao {
-//    @Query("SELECT * from TaskEntity")
-//    fun getTasks(): Flow<List<TaskEntity>>
-//
-//    @Insert
-//    suspend fun addTask(item: TaskEntity)
-//
-//
-//    // Función para eliminar una tarea por su ID (Punto 5) ANADIDO POR NOSOTROS
-//    @Query("DELETE FROM TaskEntity WHERE id = :taskId")
-//    suspend fun deleteTaskById(taskId: com.luisbaena.tasksscreen.addtasks.ui.model.TaskModel)
-//
-//    @Update
-//    suspend fun updateTask(task: TaskEntity)
-//
-//}
-
 @Dao
 interface TaskDao {
     @Query("SELECT * FROM TaskEntity")
@@ -56,3 +27,4 @@ interface TaskDao {
     @Delete
     suspend fun deleteTask(task: TaskEntity)  // Aquí también debe ser TaskEntity
 }
+

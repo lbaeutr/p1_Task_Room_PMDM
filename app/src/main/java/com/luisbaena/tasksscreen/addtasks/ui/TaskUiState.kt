@@ -15,4 +15,5 @@ sealed interface TaskUiState {
 
     // Estado de éxito con una lista de tareas
     data class Success(val tasks: List<TaskModel>) : TaskUiState
+
 }
